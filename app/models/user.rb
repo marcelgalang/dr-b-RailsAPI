@@ -5,6 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
  has_many :carts
- belongs_to :current_cart, :class_name => "Cart"
+ # belongs_to :current_cart, :class_name => "Cart"
 
 end

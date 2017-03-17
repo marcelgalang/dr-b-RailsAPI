@@ -1,5 +1,5 @@
 class Cart < ApplicationRecord
-  has_many :ordered_services
-  has_many :services, through: :ordered_services
-  belongs_to :users
+  has_many :service_cart_joins
+  has_many :services, through: :service_cart_joins
+  belongs_to :user
 end

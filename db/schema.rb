@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170315133139) do
+ActiveRecord::Schema.define(version: 20170317214456) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -34,6 +34,16 @@ ActiveRecord::Schema.define(version: 20170315133139) do
     t.datetime "updated_at", null: false
     t.index ["cart_id"], name: "index_ordered_services_on_cart_id", using: :btree
     t.index ["service_id"], name: "index_ordered_services_on_service_id", using: :btree
+  end
+
+  create_table "service_cart_joins", force: :cascade do |t|
+    t.integer  "cart_id"
+    t.integer  "service_id"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+    t.integer  "quantity",   default: 1
+    t.index ["cart_id"], name: "index_service_cart_joins_on_cart_id", using: :btree
+    t.index ["service_id"], name: "index_service_cart_joins_on_service_id", using: :btree
   end
 
   create_table "service_categories", force: :cascade do |t|
@@ -72,6 +82,8 @@ ActiveRecord::Schema.define(version: 20170315133139) do
 
   add_foreign_key "ordered_services", "carts"
   add_foreign_key "ordered_services", "services"
+  add_foreign_key "service_cart_joins", "carts"
+  add_foreign_key "service_cart_joins", "services"
   add_foreign_key "service_categories", "categories"
   add_foreign_key "service_categories", "services"
 end
