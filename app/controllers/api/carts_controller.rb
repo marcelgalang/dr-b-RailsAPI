@@ -1,5 +1,5 @@
 class Api::CartsController < ApplicationController
-
+  before_filter :set_cart
   # def index
   #   render json: Cart.all.to_json(include: [:categories])
   # end
@@ -28,10 +28,13 @@ class Api::CartsController < ApplicationController
 
   private
 
-      def cart_params
-          params.require(:cart).permit(:id)
-      end
+  def cart_params
+    params.require(:cart).permit(:id)
+  end
 
+  def set_cart
+    @cart = Cart.find(params[:id])
+  end
 
 
 end
