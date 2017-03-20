@@ -1,5 +1,6 @@
 import React, { PropTypes } from 'react'
 import Product from './Product'
+import Button  from 'react-bootstrap'
 
 const Cart  = ({ products, total, onCheckoutClicked }) => {
   const hasProducts = products.length > 0
@@ -13,7 +14,7 @@ const Cart  = ({ products, total, onCheckoutClicked }) => {
       />
     )
   ) : (
-    <em>Please add some products to cart.</em>
+    <em>Your cart is empty.</em>
   )
 
   return (
