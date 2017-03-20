@@ -1,8 +1,8 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { checkout } from '../actions'
+import { checkout } from '../actions/index'
 import { getTotal, getCartProducts } from '../reducers'
-import Cart from '../components/Cart'
+import Cart from './Cart'
 
 const CartContainer = ({ products, total, checkout }) => (
   <Cart

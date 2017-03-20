@@ -6,9 +6,17 @@ import createLogger from 'redux-logger'
 import thunk from 'redux-thunk'
 import reducer from './reducers'
 import { getAllProducts } from './actions'
-import App from './containers/App'
 import './index.css';
-import './css/main.css';  
+import './css/main.css';
+import 'bootstrap/dist/css/bootstrap.css';
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+import App from './components/App'
+import ProductsContainer from './components/ProductsContainer'
+import CartContainer from './components/CartContainer'
+import Checkout from './components/Checkout'
+
+
+
 
 
 const middleware = [ thunk ];
@@ -25,7 +33,14 @@ store.dispatch(getAllProducts())
 
 render(
   <Provider store={store}>
-    <App />
+    <Router >
+      <div>
+        <Route path="/" component={App} />
+        <Route path="/products" component={ProductsContainer} />
+        <Route path="/cart" component={CartContainer} />
+        <Route path="/checkout" component={Checkout} />
+      </div>
+    </Router>
   </Provider>,
   document.getElementById('root')
 )
