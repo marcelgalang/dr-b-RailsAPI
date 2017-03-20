@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import './App.css';
-import ServicesList from './ServicesList'
+import ProductsList from './ProductsList'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        YO
-        <ServicesList/>
+        <ProductsList/>
+
       </div>
     );
   }

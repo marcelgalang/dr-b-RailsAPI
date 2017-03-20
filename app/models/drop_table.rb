@@ -1,2 +1,0 @@
-class DropTable < ApplicationRecord
-end

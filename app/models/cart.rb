@@ -1,4 +1,4 @@
 class Cart < ApplicationRecord
-  has_many :service_cart_joins
-  has_many :services, through: :service_cart_joins
+  has_many :product_carts
+  has_many :products, through: :product_carts
 end
