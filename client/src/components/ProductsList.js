@@ -5,6 +5,7 @@ const ProductsList = ({ title, children }) => (
     <h3>{title}</h3>
     <div>{children}</div>
   </div>
+
 )
 
 ProductsList.propTypes = {
