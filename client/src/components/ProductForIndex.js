@@ -1,9 +1,11 @@
 import React, { PropTypes } from 'react'
+import { Link } from 'react-router-dom'
+import Product from './Product'
 
 const ProducForIndex = ({title}) => (
-  <h3 id='sidebar'>
+  <Link to={`/products/${title.id}`}>
     {title}
-  </h3>
+  </Link>
 )
 
 ProducForIndex.propTypes = {

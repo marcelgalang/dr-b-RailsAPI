@@ -17,13 +17,13 @@ import { store } from './store.js'
 
 
 
-store.dispatch(getAllProducts())
 
 render(
   <Provider store={store}>
     <Router >
       <div>
         <Route path="/" component={App} />
+        <Route path="/products/${prodcut.id}" />
         <Route path="/products" component={ProductsContainer} />
         <Route path="/cart" component={CartContainer} />
         <Route path="/checkout" component={Checkout} />
