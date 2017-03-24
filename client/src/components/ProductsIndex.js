@@ -1,12 +1,12 @@
 import React, { Component} from 'react'
 import { connect } from 'react-redux'
-import { getVisibleProducts } from '../reducers/products'
 import ProductItem from './ProductItem'
-import ProductsList from './ProductsList'
-import Product from './Product'
+import { addToCart } from '../actions/index'
+import { getVisibleProducts } from '../reducers/products'
+import { Link } from 'react-router-dom'
 
 
-export default class ProductsIndex extends Component {
+class ProductsIndex extends Component {
   constructor(props) {
     super(props)
 
@@ -20,11 +20,7 @@ export default class ProductsIndex extends Component {
 
   componentDidMount() {
 
-       this.fetchProducts()
-  }
-
-  fetchProducts() {
-    fetch('/api/products')
+       fetch('/api/products')
             .then(response => response.json())
             .then(data => this.setState({
                 products: data,
@@ -42,35 +38,69 @@ export default class ProductsIndex extends Component {
   render() {
 
     const products = this.state.products.map((product) => (
-      <div key={product.id}>
+      <Link to={`/product/${product.id}`} key={product.id}>
         <h3 className="product-link" onClick={() => this.setProduct(product.id)}>
             {product.title}
         </h3>
-      </div>
+      </Link>
     ))
 
     return (
-      <div id="main-container">
-        <div id="products-container">
-            {/*<Link to="/products/new">Add A product</Link>*/}
+      <Root>
+        <Sidebar>
             {products}
-        </div>
-        <div id="product-main-container">
+        </Sidebar>
+        <Main>
             {
                 this.state.currentProduct
 
                 ?
 
-                <ProductItem product={this.state.currentProduct} />
+                <ProductItem product={this.state.currentProduct}
+                key={this.state.currentProduct.id}
+                onAddToCartClicked={() => addToCart(this.state.currentProduct.id)} />
 
                 :
 
                 <h4>...loading</h4>
             }
-        </div>
-      </div>
+        </Main>
+      </Root>
 
     )
   }
-
 }
+
+const mapStateToProps = state => ({
+  products: getVisibleProducts(state.products)
+})
+
+const Root = (props) => (
+  <div style= {{
+    display: 'flex'
+  }} {...props}/>
+)
+
+const Sidebar = (props) => (
+  <div style= {{
+    width: '33vw',
+    height: '100vh',
+    overflow: 'auto',
+    background: '#eee'
+  }} {...props}/>
+)
+
+const Main = (props) => (
+  <div style= {{
+    flex: 1,
+    height: '100vh',
+    overflow: 'auto'
+  }}>
+    <div style={{ padding: '20px'}} {...props}/>
+  </div>
+)
+
+export default connect(
+  mapStateToProps,
+  { addToCart }
+)(ProductsIndex)
