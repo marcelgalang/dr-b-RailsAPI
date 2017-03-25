@@ -5,7 +5,7 @@ import thunk from 'redux-thunk'
 
 
 export function configureStore(){
-  return createStore(reducer,
+  return createStore(reducer,  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
   applyMiddleware(...[ thunk ]))
 }
 

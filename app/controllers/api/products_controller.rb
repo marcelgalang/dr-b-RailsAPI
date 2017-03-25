@@ -1,7 +1,7 @@
 class Api::ProductsController < ApplicationController
 
   def index
-    render json: Product.all.to_json
+    render json: Product.order(:category_id).to_json(include: [ :category ])
   end
 
   def show
@@ -30,7 +30,7 @@ class Api::ProductsController < ApplicationController
   private
 
       def product_params
-          params.require(:product).permit(:title, :description, :price, :quantity, :category_id)
+          params.require(:product).permit(:title, :description, :price, :inventory, :category_id)
       end
 
 

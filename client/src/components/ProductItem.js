@@ -8,9 +8,12 @@ import { Button } from 'reactstrap';
 const ProductItem = ({ product, onAddToCartClicked }) => (
   <div style={{ marginBottom: 20 }}>
     <Product
+      category={product.category}
+      description={product.description}
       title={product.title}
       price={product.price} />
     <Button
+      style={{ marginTop: 10 }}
       color="success"
       size="large"
       onClick={onAddToCartClicked}
