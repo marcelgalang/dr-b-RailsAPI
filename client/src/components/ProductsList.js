@@ -24,12 +24,10 @@ const ProductsList = ({ title, children }) =>(
     </div>
   </Sidebar>
   <Main>
-    <Route path="/products/:productId" render={({ match}) => (
-      <ProductItem
-      onAddToCartClicked={() => addToCart(children.find(product => product.id === match.params.productId))}
-      key={children.find(product => product.id === match.params.productId)}
-      product={children.find(product => product.id === match.params.productId)}
-      />
+
+    <Route path="/products/:productId"  render={({match}) => (
+      <Product product=
+        {children.find(product => product.id === match.params.productId)}/>
     )}/>
   </Main>
   </Root>
@@ -38,6 +36,7 @@ const ProductsList = ({ title, children }) =>(
 const ProductX= ({match}) => (
   <div>
     {match.params.productId}
+    {match.params.product}
   </div>
 )
 

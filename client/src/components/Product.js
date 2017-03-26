@@ -1,29 +1,20 @@
 import React, { PropTypes } from 'react'
+import { Button } from 'reactstrap';
 
-const Product = ({ price, inventory, title, category, description }) => (
+const Product = ({ product, onAddToCartClicked }) => (
   <div>
-    
-    <h3>service: {title}</h3>
-    {description} - &#36;{price}{inventory ? ` x ${inventory}` : null}
+    <div>
+      <h3>service: {product.title}</h3>
+      {product.description} - &#36;{product.price}
+    </div>
+    <Button
+      onClick={onAddToCartClicked}>
+      'Add to cart'
+    </Button>
   </div>
 )
 
-const Main = (props) => (
-  <div style={{
-    flex: 1,
-    height: '100vh',
-    overflow: 'auto'
-  }}>
-    <div style={{ padding: '20px'}} {...props}/>
-  </div>
-)
 
-Product.propTypes = {
-  price: PropTypes.number,
-  inventory: PropTypes.number,
-  title: PropTypes.string,
-  category: PropTypes.string,
-  description: PropTypes.string
-}
+
 
 export default Product

@@ -10,7 +10,7 @@ import { Link } from 'react-router-dom'
 
 const ProductsContainer = ({ products, addToCart }) => (
   <div>
-  <ProductsList title="Products">
+  <ProductsList title="Products" >
     {products}
   </ProductsList>
 
