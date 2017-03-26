@@ -1,7 +1,7 @@
-
 import { createStore, applyMiddleware } from 'redux'
 import reducer from './reducers'
 import thunk from 'redux-thunk'
+import { getAllProducts } from './actions'
 
 
 export function configureStore(){
@@ -10,3 +10,5 @@ export function configureStore(){
 }
 
 export const store = configureStore()
+
+store.dispatch(getAllProducts())

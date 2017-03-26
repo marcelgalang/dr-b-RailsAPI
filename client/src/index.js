@@ -9,7 +9,8 @@ import App from './components/App'
 import ProductsContainer from './components/ProductsContainer'
 import CartContainer from './components/CartContainer'
 import Checkout from './components/Checkout'
-import { store } from './store.js'
+import Product from './components/Product'
+import {store} from './store'
 
 
 
@@ -19,8 +20,8 @@ render(
     <Router >
       <div>
         <Route path="/" component={App} />
-        <Route path="/products/${prodcut.id}" />
-        <Route path="/products" component={ProductsContainer} />
+
+        <Route  path="/products" component={ProductsContainer} />
         <Route path="/cart" component={CartContainer} />
         <Route path="/checkout" component={Checkout} />
       </div>

@@ -1,16 +1,13 @@
 import React, { PropTypes } from 'react'
-import { Link } from 'react-router-dom'
-import Product from './Product'
 
-const ProducForIndex = ({title}) => (
-  <Link to={`/products/${title.id}`}>
-    {title}
-  </Link>
+
+const ProductForIndex = ({title, }) => (
+  <div>
+
+    <h3>{title}</h3>
+    
+  </div>
 )
 
-ProducForIndex.propTypes = {
 
-  title: PropTypes.string
-}
-
-export default ProducForIndex
+export default ProductForIndex

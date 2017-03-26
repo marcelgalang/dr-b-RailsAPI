@@ -29,7 +29,7 @@ class ProductsIndex extends Component {
   }
 
   setProduct(id){
-    const currentProduct = this.state.products.filter(product => product.id === id)[0]
+    const currentProduct = this.props.products.filter(product => product.id === id)[0]
     this.setState({
       currentProduct
     })
@@ -37,13 +37,14 @@ class ProductsIndex extends Component {
 
   render() {
 
-    const products = this.state.products.map((product) => (
+    const products = this.props.products.map((product) => (
       <Link to={`/product/${product.id}`} key={product.id}>
-        <h3 className="product-link" onClick={() => this.setProduct(product.id)}>
+        <h3  onClick={() => this.setProduct(product.id)}>
             {product.title}
         </h3>
       </Link>
     ))
+
 
     return (
       <Root>
@@ -58,7 +59,7 @@ class ProductsIndex extends Component {
 
                 <ProductItem product={this.state.currentProduct}
                 key={this.state.currentProduct.id}
-                onAddToCartClicked={() => addToCart(this.state.currentProduct.id)} />
+                 />
 
                 :
 
@@ -76,13 +77,13 @@ const mapStateToProps = state => ({
 })
 
 const Root = (props) => (
-  <div style= {{
+  <div style={{
     display: 'flex'
   }} {...props}/>
 )
 
 const Sidebar = (props) => (
-  <div style= {{
+  <div style={{
     width: '33vw',
     height: '100vh',
     overflow: 'auto',
@@ -91,7 +92,7 @@ const Sidebar = (props) => (
 )
 
 const Main = (props) => (
-  <div style= {{
+  <div style={{
     flex: 1,
     height: '100vh',
     overflow: 'auto'
