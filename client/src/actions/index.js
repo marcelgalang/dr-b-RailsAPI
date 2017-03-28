@@ -28,12 +28,16 @@ export const addToCart = productId => (dispatch, getState) => {
 export const checkout = products => (dispatch, getState) => {
   const { cart } = getState()
 
-  dispatch({
-    type: types.CHECKOUT_REQUEST
+  fetch('/api/carts', {
+    method: 'POST',
+    headers: {
+      'Accept': 'application/json',
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      id: 'id',
+      products: 'products',
+      total: 'total'
   })
-  // buyProducts(products, () => {
-  //   dispatch({
-  //     type: types.CHECKOUT_SUCCESS,
-  //     cart
-  //   })
+})
 }

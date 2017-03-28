@@ -1,20 +1,18 @@
 import React, { PropTypes } from 'react'
-import { Button } from 'reactstrap';
 
-const Product = ({ product, onAddToCartClicked }) => (
+const Product = ({ price, quantity, title }) => (
+
   <div>
-    <div>
-      <h3>service: {product.title}</h3>
-      {product.description} - &#36;{product.price}
-    </div>
-    <Button
-      onClick={onAddToCartClicked}>
-      'Add to cart'
-    </Button>
+    {title} - &#36;{price}{quantity ? ` x ${quantity}` : null}
   </div>
 )
 
 
 
+Product.propTypes = {
+  price: PropTypes.number,
+  quantity: PropTypes.number,
+  title: PropTypes.string
+}
 
 export default Product

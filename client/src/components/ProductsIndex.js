@@ -1,80 +1,45 @@
-import React, { Component} from 'react'
-import { connect } from 'react-redux'
+import React, { PropTypes } from 'react'
 import ProductItem from './ProductItem'
-import { addToCart } from '../actions/index'
-import { getVisibleProducts } from '../reducers/products'
-import { Link } from 'react-router-dom'
+import ProductDetail from './ProductDetail'
+import Product from './Product'
 
 
-class ProductsIndex extends Component {
-  constructor(props) {
-    super(props)
+import ProductForIndex from './ProductForIndex'
 
-    this.state = {
-      products: [],
-      currentProduct: null,
-      title: '',
-    }
-
-  }
-
-  componentDidMount() {
-
-       fetch('/api/products')
-            .then(response => response.json())
-            .then(data => this.setState({
-                products: data,
-                currentProduct: data[0]
-            }))
-  }
-
-  setProduct(id){
-    const currentProduct = this.props.products.filter(product => product.id === id)[0]
-    this.setState({
-      currentProduct
-    })
-  }
-
-  render() {
-
-    const products = this.props.products.map((product) => (
-      <Link to={`/product/${product.id}`} key={product.id}>
-        <h3  onClick={() => this.setProduct(product.id)}>
-            {product.title}
-        </h3>
-      </Link>
-    ))
+import { Link, Route } from 'react-router-dom'
 
 
-    return (
-      <Root>
-        <Sidebar>
-            {products}
-        </Sidebar>
-        <Main>
-            {
-                this.state.currentProduct
+const ProductsIndex = ({ title, children, product }) => (
+  <Root>
+    <Sidebar>
+      <h3>{title}</h3>
+      <SidebarItem>
+        <div>
+          {children.map(product => (
+            <Link to={`/products/${product.id}`} >
+            <ProductForIndex
+              key={product.id}
+              title={product.title}
+              price={product.price}
+              />
+            </Link>
+          ))}
+        </div>
+      </SidebarItem>
 
-                ?
+    </Sidebar>
+    <Main>
+    <Route path="/products/:productId" render={({  match }) => (
+      <ProductDetail product={children.find(product => product.id === match.params.productId)}/>
+    )}/>
+    </Main>
+  </Root>
+)
 
-                <ProductItem product={this.state.currentProduct}
-                key={this.state.currentProduct.id}
-                 />
-
-                :
-
-                <h4>...loading</h4>
-            }
-        </Main>
-      </Root>
-
-    )
-  }
+ProductsIndex.propTypes = {
+  children: PropTypes.node,
+  title: PropTypes.string.isRequired
 }
-
-const mapStateToProps = state => ({
-  products: getVisibleProducts(state.products)
-})
 
 const Root = (props) => (
   <div style={{
@@ -91,6 +56,15 @@ const Sidebar = (props) => (
   }} {...props}/>
 )
 
+const SidebarItem = (props) => (
+  <div style={{
+    whiteSpace: 'nowrap',
+    textOverflow: 'ellipsis',
+    overflow: 'hidden',
+    padding: '5px 10px'
+  }} {...props}/>
+)
+
 const Main = (props) => (
   <div style={{
     flex: 1,
@@ -101,7 +75,4 @@ const Main = (props) => (
   </div>
 )
 
-export default connect(
-  mapStateToProps,
-  { addToCart }
-)(ProductsIndex)
+export default ProductsIndex

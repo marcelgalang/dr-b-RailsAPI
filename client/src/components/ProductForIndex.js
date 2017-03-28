@@ -1,11 +1,11 @@
 import React, { PropTypes } from 'react'
 
 
-const ProductForIndex = ({title, }) => (
+const ProductForIndex = ({title}) => (
   <div>
 
     <h3>{title}</h3>
-    
+
   </div>
 )
 

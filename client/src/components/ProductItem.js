@@ -1,8 +1,7 @@
 import React, { PropTypes } from 'react'
 import Product from './Product'
 import { Button } from 'reactstrap';
-
-
+import * as Components from '../css/ProductStyle'
 
 
 const ProductItem = ({ product, onAddToCartClicked }) => (
@@ -10,22 +9,23 @@ const ProductItem = ({ product, onAddToCartClicked }) => (
     <Product
       title={product.title}
       price={product.price} />
-    <Button
+    <button
       onClick={onAddToCartClicked}
       disabled={product.inventory > 0 ? '' : 'disabled'}>
       {product.inventory > 0 ? 'Add to cart' : 'Sold Out'}
-    </Button>
+    </button>
   </div>
 )
+
 
 ProductItem.propTypes = {
   product: PropTypes.shape({
     title: PropTypes.string.isRequired,
     price: PropTypes.number.isRequired,
-    category: PropTypes.object,
     inventory: PropTypes.number.isRequired
   }).isRequired,
   onAddToCartClicked: PropTypes.func.isRequired
 }
+
 
 export default ProductItem

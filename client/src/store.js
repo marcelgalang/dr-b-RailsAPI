@@ -2,13 +2,18 @@ import { createStore, applyMiddleware } from 'redux'
 import reducer from './reducers'
 import thunk from 'redux-thunk'
 import { getAllProducts } from './actions'
+import createLogger from 'redux-logger'
 
 
-export function configureStore(){
-  return createStore(reducer,  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-  applyMiddleware(...[ thunk ]))
+
+const middleware = [ thunk ];
+if (process.env.NODE_ENV !== 'production') {
+  middleware.push(createLogger());
 }
 
-export const store = configureStore()
+const store = createStore(
+  reducer,
+  applyMiddleware(...middleware)
+)
 
 store.dispatch(getAllProducts())

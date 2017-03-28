@@ -1,84 +1,25 @@
 import React, { PropTypes } from 'react'
-import ProductItem from '../components/ProductItem'
-import ProductForIndex from '../components/ProductForIndex'
-import { products } from './ProductsContainer'
-import { addToCart } from '../actions'
-import {  Route, Link } from 'react-router-dom'
+import ProductItem from './ProductItem'
+import { Route, Link } from 'react-router-dom'
 import Product from './Product'
+import ProductDetail from './ProductDetail'
+import ProductIndexItem from './ProductIndexItem'
+import ProductForIndex from './ProductForIndex'
+import { addToCart } from '../actions'
 
-
-
-const ProductsList = ({ title, children }) =>(
-  <Root>
-  <Sidebar>
-    <div>
-      <h3>{title}</h3>
-      <div>{children.map((product) => (
-          <SidebarItem key={product.id}>
-            <Link to={`/products/${product.id}`}>
-              {product.title}
-            </Link>
-          </SidebarItem>
-
-      ))}</div>
-    </div>
-  </Sidebar>
-  <Main>
-
-    <Route path="/products/:productId"  render={({match}) => (
-      <Product product=
-        {children.find(product => product.id === match.params.productId)}/>
-    )}/>
-  </Main>
-  </Root>
-)
-
-const ProductX= ({match}) => (
+const ProductsList = ({ title, children }) => (
   <div>
-    {match.params.productId}
-    {match.params.product}
-  </div>
-)
-
-
-
-const Root = (props) => (
-  <div style={{
-    display: 'flex'
-  }} {...props}/>
-)
-
-const Sidebar = (props) => (
-  <div style={{
-    width: '33vw',
-    height: '100vh',
-    overflow: 'auto',
-    background: '#eee'
-  }} {...props}/>
-)
-
-const SidebarItem = (props) => (
-  <div style={{
-    whiteSpace: 'nowrap',
-    textOverflow: 'ellipsis',
-    overflow: 'hidden',
-    padding: '5px 10px'
-  }} {...props}/>
-)
-
-const Main = (props) => (
-  <div style={{
-    flex: 1,
-    height: '100vh',
-    overflow: 'auto'
-  }}>
-    <div style={{ padding: '20px'}} {...props}/>
+    <h3>{title}</h3>
+    <div>
+      {children}
+    </div>
   </div>
 )
 
 ProductsList.propTypes = {
   children: PropTypes.node,
-  title: PropTypes.string.isRequired
+  title: PropTypes.string
 }
+
 
 export default ProductsList
