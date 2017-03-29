@@ -8,32 +8,12 @@ import { Link, Route } from 'react-router-dom'
 
 const ProductsIndex = ({ title, children, addToCart, onAddToCartClicked }) =>
 (
-  <Root>
-  <Sidebar>
+  
     <div>
       <h3>{title}</h3>
-      <div>{children.map((product) => (
-          <SidebarItem key={product.id}>
-            <Link to={`/products/${product.id}`}>
-              {product.title}
-            </Link>
-          </SidebarItem>
-      ))}</div>
+      <h4>{children}</h4>
     </div>
-  </Sidebar>
-  <Main>
 
-    <Route path="/products/:productId"  render={({match}) =>
-
-    (
-      <Product
-        product={children.find(product => product.id == match.params.productId)}
-        
-        />
-
-    )}/>
-  </Main>
-  </Root>
 )
 
 

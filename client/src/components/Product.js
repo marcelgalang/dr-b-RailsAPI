@@ -5,23 +5,31 @@ import { addToCart } from '../actions'
 import {onAddToCartClicked} from '../containers/ProductsIndexContainer'
 
 
-const Product = ({ product, addToCart }) =>
+const Product = ({ product, addToCart, onAddToCartClicked }) =>
   (
     <div>
       <div>
         <h3>service: {product.title}</h3>
         {product.description} - &#36;{product.price}
       </div>
-      <Button
-        onClick= {() => addToCart(product.id)}
-        >
-        Add to cart
-      </Button>
+      <button
+
+        onClick={onAddToCartClicked}
+        disabled={product.inventory > 0 ? '' : 'disabled'}>
+        {product.inventory > 0 ? 'Add to cart' : 'Sold Out'}
+      </button>
       <CartContainer/>
     </div>
   );
 
-
+  Product.propTypes = {
+    product: PropTypes.shape({
+      title: PropTypes.string.isRequired,
+      price: PropTypes.number.isRequired,
+      inventory: PropTypes.number.isRequired
+    }).isRequired,
+    onAddToCartClicked: PropTypes.func.isRequired
+  }
 
 
 

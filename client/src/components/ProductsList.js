@@ -6,12 +6,14 @@ import { addToCart } from '../actions'
 import {  Route, Link } from 'react-router-dom'
 import Product from './Product'
 
+
 const ProductsList = ({ title, children }) => (
   <div>
     <h3>{title}</h3>
     <div>
       {children}
     </div>
+
   </div>
 )
 

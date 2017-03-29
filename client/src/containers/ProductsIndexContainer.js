@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react'
+import React, { PropTypes, Component } from 'react'
 import { connect } from 'react-redux'
 import { Link, Route } from 'react-router-dom'
 import { addToCart } from '../actions'
@@ -12,11 +12,33 @@ import Product from '../components/Product'
 import ProductsIndex from '../components/ProductsIndex'
 import ProductForIndex from '../components/ProductForIndex'
 
-
 const ProductsIndexContainer = ({ products, addToCart }) => (
 
   <ProductsIndex title="Products">
-      {products}
+    <Root>
+      <Sidebar>
+      {products.map((product) => (
+          <SidebarItem key={product.id}>
+            <Link to={`/products/${product.id}`}
+            key={product.id}>
+              {product.title}
+            </Link>
+          </SidebarItem>
+      ))}
+      </Sidebar>
+      <Main>
+        <Route path="/products/:productId"  render={({match}) => (
+          <Product
+            product={products.find(product => product.id
+              == match.params.productId)}
+
+            />
+        )}/>
+      </Main>
+    </Root>
+
+
+
   </ProductsIndex>
 
 )
