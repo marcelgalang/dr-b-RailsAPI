@@ -25,6 +25,8 @@ const ProductsContainer = ({ products, addToCart }) => (
 
 )
 
+
+
 const mapStateToProps = state => ({
   products: getVisibleProducts(state.products)
 })

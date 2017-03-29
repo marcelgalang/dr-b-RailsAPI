@@ -1,18 +1,29 @@
 import React, { PropTypes } from 'react'
-
-const Product = ({ price, quantity, title }) => (
-
-  <div>
-    {title} - &#36;{price}{quantity ? ` x ${quantity}` : null}
-  </div>
-)
+import { Button } from 'reactstrap';
+import CartContainer from '../containers/CartContainer'
+import { addToCart } from '../actions'
+import {onAddToCartClicked} from '../containers/ProductsIndexContainer'
 
 
+const Product = ({ product, addToCart }) =>
+  (
+    <div>
+      <div>
+        <h3>service: {product.title}</h3>
+        {product.description} - &#36;{product.price}
+      </div>
+      <Button
+        onClick= {() => addToCart(product.id)}
+        >
+        Add to cart
+      </Button>
+      <CartContainer/>
+    </div>
+  );
 
-Product.propTypes = {
-  price: PropTypes.number,
-  quantity: PropTypes.number,
-  title: PropTypes.string
-}
+
+
+
+
 
 export default Product

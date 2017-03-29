@@ -1,12 +1,12 @@
 import React, { PropTypes, Component } from 'react'
-import Product_ from './Product'
-import { Button } from 'reactstrap';
 
 
-const Product = ({ product, onAddToCartClicked }) => (
 
-  <h1>XX{product}XX</h1>
+const Product = ({ price, quantity, title }) => (
 
+  <div>
+    {title} - &#36;{price}{quantity ? ` x ${quantity}` : null}
+  </div>
 )
 
 

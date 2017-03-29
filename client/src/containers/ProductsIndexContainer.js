@@ -14,24 +14,12 @@ import ProductForIndex from '../components/ProductForIndex'
 
 
 const ProductsIndexContainer = ({ products, addToCart }) => (
-  <Root>
-    <ProductsList>
-      {products.map(product => (
-        <Link to={`/products/${product.id}`}
-          key={product.id}>
-        <ProductForIndex
-          title={product.title}
-          price={product.price}
-          product={product}/>
-        </Link>
-      ))}
-    </ProductsList>
-    <Route path="/products/:id" render={({ match }) => (
-        <ProductDetail product={products.find(product => product.id === match.params.productId)}/>
-      )}/>
-  </Root>
-)
 
+  <ProductsIndex title="Products">
+      {products}
+  </ProductsIndex>
+
+)
 
 
 const Root = (props) => (
@@ -74,5 +62,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { addToCart }
+  { addToCart },
 )(ProductsIndexContainer)

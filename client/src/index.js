@@ -38,7 +38,6 @@ render(
         <Route path="/" exact={true} component={App} />
         <Route  path="/products" component={ProductsIndexContainer} />
         <Route  path="/products/:id" component={ProductDetail} />
-
         <Route path="/cart" component={CartContainer} />
         <Route path="/checkout" component={Checkout} />
       </div>

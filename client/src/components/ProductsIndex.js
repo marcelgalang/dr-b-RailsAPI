@@ -2,44 +2,40 @@ import React, { PropTypes } from 'react'
 import ProductItem from './ProductItem'
 import ProductDetail from './ProductDetail'
 import Product from './Product'
-
-
 import ProductForIndex from './ProductForIndex'
-
 import { Link, Route } from 'react-router-dom'
 
 
-const ProductsIndex = ({ title, children, product }) => (
+const ProductsIndex = ({ title, children, addToCart, onAddToCartClicked }) =>
+(
   <Root>
-    <Sidebar>
+  <Sidebar>
+    <div>
       <h3>{title}</h3>
-      <SidebarItem>
-        <div>
-          {children.map(product => (
-            <Link to={`/products/${product.id}`} >
-            <ProductForIndex
-              key={product.id}
-              title={product.title}
-              price={product.price}
-              />
+      <div>{children.map((product) => (
+          <SidebarItem key={product.id}>
+            <Link to={`/products/${product.id}`}>
+              {product.title}
             </Link>
-          ))}
-        </div>
-      </SidebarItem>
+          </SidebarItem>
+      ))}</div>
+    </div>
+  </Sidebar>
+  <Main>
 
-    </Sidebar>
-    <Main>
-    <Route path="/products/:productId" render={({  match }) => (
-      <ProductDetail product={children.find(product => product.id === match.params.productId)}/>
+    <Route path="/products/:productId"  render={({match}) =>
+
+    (
+      <Product
+        product={children.find(product => product.id == match.params.productId)}
+        
+        />
+
     )}/>
-    </Main>
+  </Main>
   </Root>
 )
 
-ProductsIndex.propTypes = {
-  children: PropTypes.node,
-  title: PropTypes.string.isRequired
-}
 
 const Root = (props) => (
   <div style={{
