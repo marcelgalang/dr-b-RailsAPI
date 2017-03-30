@@ -1,28 +1,25 @@
 import React from 'react'
-import CartContainer from './CartContainer'
-import ProductsContainer from './ProductsContainer'
-// import PContainer from './PContainer'
+import { BrowserRouter as Router, Route } from 'react-router-dom'
+
+import Products from './Products'
+import Carts from './Carts'
+import Checkout from './Checkout'
+import About from './About'
 
 const App = () => (
-  <div>
-      <h1>DR.B Mac Repair</h1>
-      <h2>WE FIX JUST ABOUT EVERYTHING</h2>
-      <h3>MACS, PCS, TABLETS, CONSOLES, & SMART PHONES</h3>
-
-      <ProductsContainer/>
-      <CartContainer/>
-
-  </div>
+  <Router >
+    <div>
+      <Navbar />
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/products" component={Products} />
+        <Route path="/cart" component={CartContainer} />
+        <Route path="/checkout" component={Checkout} />
+        <Route exact path="/about" component={About}
+      </Switch>
+    </div>
+  </Router>
 )
 
-const Main = (props) => (
-  <div style={{
-    flex: 1,
-    height: '100vh',
-    overflow: 'auto'
-  }}>
-    <div style={{ padding: '20px'}} {...props}/>
-  </div>
-)
 
 export default App

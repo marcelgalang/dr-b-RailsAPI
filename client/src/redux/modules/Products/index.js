@@ -1,5 +1,7 @@
 import { combineReducers } from 'redux'
 import { RECEIVE_PRODUCTS, ADD_TO_CART } from '../constants/ActionTypes'
+import fetch from 'isomorphic-fetch';
+import * as types from '../constants/ActionTypes'
 
 const products = (state, action) => {
   switch (action.type) {
@@ -42,6 +44,19 @@ const visibleIds = (state = [], action) => {
     default:
       return state
   }
+}
+
+const receiveProducts = products => ({
+  type: types.RECEIVE_PRODUCTS,
+  products: products
+})
+
+export const getAllProducts = () => dispatch => {
+  fetch('/api/products')
+    .then(response => response.json())
+    .then(products => {
+    dispatch(receiveProducts(products))
+  })
 }
 
 export default combineReducers({

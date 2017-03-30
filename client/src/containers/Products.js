@@ -12,7 +12,7 @@ import ProductsIndex from '../components/ProductsIndex'
 import ProductForIndex from '../components/ProductForIndex'
 
 
-const PContainer = ({ products, addToCart }) => (
+const Products = ({ products, addToCart }) => (
 
     <PList title="Products">
     <Root>
