@@ -1,11 +1,13 @@
 import React, { PropTypes } from 'react'
-import Product from './Product'
+import ProductX from './ProductX'
 import { Button } from 'reactstrap';
 import * as Components from '../css/ProductStyle'
 
-const ProductItem = ({ product, onAddToCartClicked }) => (
+
+
+const PItem = ({ product, onAddToCartClicked }) => (
   <div style={{ marginBottom: 20 }}>
-    <Product
+    <ProductX
       title={product.title}
       price={product.price} />
     <button
@@ -27,4 +29,4 @@ ProductItem.propTypes = {
 }
 
 
-export default ProductItem
+export default PItem

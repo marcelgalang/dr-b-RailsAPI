@@ -5,22 +5,21 @@ import { products } from '../containers/ProductsContainer'
 import { addToCart } from '../actions'
 import {  Route, Link } from 'react-router-dom'
 import Product from './Product'
-import CartContainer from '../containers/CartContainer'
 
 
-const ProductsList = ({ title, children }) => (
+const PList = ({ title, children }) => (
   <div>
     <h3>{title}</h3>
-    <div>
+    <Sidebar>
       {children}
-    </div>
+    </Sidebar>
     <Main>
-      <CartContainer/>
+      
     </Main>
   </div>
 )
 
-ProductsList.propTypes = {
+PList.propTypes = {
   children: PropTypes.node,
   title: PropTypes.string.isRequired
 }
@@ -62,4 +61,4 @@ const Main = (props) => (
   </div>
 )
 
-export default ProductsList
+export default PList

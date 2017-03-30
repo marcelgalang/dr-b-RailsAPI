@@ -1,7 +1,7 @@
 import React from 'react'
 import CartContainer from './CartContainer'
-import ProductsIndexContainer from './ProductsIndexContainer'
-// import ProductsContainer from './ProductsContainer'
+import ProductsContainer from './ProductsContainer'
+// import PContainer from './PContainer'
 
 const App = () => (
   <div>
@@ -9,7 +9,7 @@ const App = () => (
       <h2>WE FIX JUST ABOUT EVERYTHING</h2>
       <h3>MACS, PCS, TABLETS, CONSOLES, & SMART PHONES</h3>
 
-      <ProductsIndexContainer/>
+      <ProductsContainer/>
       <CartContainer/>
 
   </div>

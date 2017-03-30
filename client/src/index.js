@@ -6,6 +6,7 @@ import './css/main.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import { BrowserRouter as Router, Route } from 'react-router-dom'
 import App from './containers/App'
+import PContainer from './containers/PContainer'
 import ProductsContainer from './containers/ProductsContainer'
 import ProductsIndexContainer from './containers/ProductsIndexContainer'
 import CartContainer from './containers/CartContainer'
@@ -36,7 +37,7 @@ render(
     <Router >
       <div>
         <Route path="/" exact={true} component={App} />
-
+        <Route  path="/ProductsContainer" component={ProductsContainer} />
         <Route  path="/products" component={ProductsIndexContainer} />
         <Route  path="/products/:id" component={ProductDetail} />
         <Route path="/cart" component={CartContainer} />

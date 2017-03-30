@@ -1,18 +1,35 @@
 import React, { PropTypes } from 'react'
 import ProductItem from './ProductItem'
 import ProductDetail from './ProductDetail'
-import Product from './Product'
+import ProductIndexItem from './ProductIndexItem'
 import ProductForIndex from './ProductForIndex'
 import { Link, Route } from 'react-router-dom'
 
 
 const ProductsIndex = ({ title, children, addToCart, onAddToCartClicked }) =>
 (
-  
+  <Root>
+  <Sidebar>
     <div>
       <h3>{title}</h3>
-      <h4>{children}</h4>
+      <div>{children.map((product) => (
+          <SidebarItem key={product.id}>
+            <Link to={`/products/${product.id}`}>
+              {product.title}
+            </Link>
+          </SidebarItem>
+
+      ))}</div>
     </div>
+  </Sidebar>
+  <Main>
+
+    <Route path="/products/:productId"  render={({match}) => (
+      <ProductIndexItem product=
+        {children.find(product => product.id == match.params.productId)}/>
+    )}/>
+  </Main>
+  </Root>
 
 )
 

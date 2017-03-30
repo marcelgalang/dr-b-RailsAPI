@@ -1,23 +1,25 @@
 import React, { PropTypes }  from 'react'
 import ProductForIndex from './ProductForIndex'
-import Product from './Product'
+import ProductX from './Product'
 import ProductItem from './ProductItem'
 import { Link } from 'react-router-dom'
 import { addToCart } from '../actions'
 import { Button } from 'reactstrap';
+import CartContainer from '../containers/CartContainer'
 
 
 const ProductIndexItem = ({ product, onAddToCartClicked }) => (
 
-  <div style={{ marginBottom: 20 }}>
-    <Product
-      title={product.title}
-      price={product.price} />
+  <div>
+    <div>
+      <h3>service: {product.title}</h3>
+      {product.description} - &#36;{product.price}
+    </div>
     <Button
-      onClick={onAddToCartClicked}
-      disabled={product.inventory > 0 ? '' : 'disabled'}>
-      {product.inventory > 0 ? 'Add to cart' : 'Sold Out'}
+      onClick={onAddToCartClicked}>
+      'Add to cart'
     </Button>
+    <CartContainer/>
   </div>
 )
 

@@ -15,30 +15,8 @@ import ProductForIndex from '../components/ProductForIndex'
 const ProductsIndexContainer = ({ products, addToCart }) => (
 
   <ProductsIndex title="Products">
-    <Root>
-      <Sidebar>
-      {products.map((product) => (
-          <SidebarItem key={product.id}>
-            <Link to={`/products/${product.id}`}
-            key={product.id}>
-              {product.title}
-            </Link>
-          </SidebarItem>
-      ))}
-      </Sidebar>
-      <Main>
-        <Route path="/products/:productId"  render={({match}) => (
-          <Product
-            product={products.find(product => product.id
-              == match.params.productId)}
-
-            />
-        )}/>
-      </Main>
-    </Root>
-
-
-
+    {products}
+    {/*if ProductIndexItem then pass onAddToCartClicked={() => addToCart(product.id)} }*/}
   </ProductsIndex>
 
 )
