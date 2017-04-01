@@ -1,11 +1,6 @@
 import React, { PropTypes } from 'react'
-import ProductItem from '../components/ProductItem'
-import ProductForIndex from '../components/ProductForIndex'
-import { products } from '../containers/ProductsContainer'
-import { addToCart } from '../actions'
 import {  Route, Link } from 'react-router-dom'
-import Product from './Product'
-import CartContainer from '../containers/CartContainer'
+
 
 
 const ProductsList = ({ title, children }) => (
@@ -15,7 +10,6 @@ const ProductsList = ({ title, children }) => (
       {children}
     </div>
     <Main>
-      <CartContainer/>
     </Main>
   </div>
 )

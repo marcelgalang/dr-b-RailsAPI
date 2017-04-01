@@ -1,84 +1,31 @@
-import React, { PropTypes } from 'react'
+import React, { Component, PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { Link, Route } from 'react-router-dom'
-import { addToCart } from '../actions'
-import { getVisibleProducts } from '../reducers/products'
-import ProductItem from '../components/ProductItem'
+import { Link, Route, match } from 'react-router-dom'
+import { addToCart } from '../redux/modules/Cart'
+import { getVisibleProducts } from '../redux/modules/Products'
+import ProductsList, { selectProduct } from '../components/ProductsList'
 import ProductDetail from '../components/ProductDetail'
-import PList from '../components/PList'
-import ProductIndexItem from '../components/ProductIndexItem'
-import ProductX from '../components/ProductX'
-import ProductsIndex from '../components/ProductsIndex'
-import ProductForIndex from '../components/ProductForIndex'
 
+class Products extends Component {
+  render() {
+    const { selectProduct, products } = this.props
 
-const Products = ({ products, addToCart }) => (
-
-    <PList title="Products">
-    <Root>
-      <Sidebar>
-      {products.map((product) => (
-          <SidebarItem key={product.id}>
-            <Link to={`/products/${product.id}`}
-            key={product.id}>
-              {product.title}
-            </Link>
-          </SidebarItem>
-      ))}
-      </Sidebar>
-      <Main>
-        <Route path="/products/:productId"  render={({match}) => (
-          <ProductX
-            product={products.find(product => product.id
-              == match.params.productId)}
-            />
-        )}/>
-      </Main>
-    </Root>
-    </PList>
-
-  )
-
-  const Root = (props) => (
-    <div style={{
-      display: 'flex'
-    }} {...props}/>
-  )
-
-  const Sidebar = (props) => (
-    <div style={{
-      width: '33vw',
-      height: '100vh',
-      overflow: 'auto',
-      background: '#eee'
-    }} {...props}/>
-  )
-
-  const SidebarItem = (props) => (
-    <div style={{
-      whiteSpace: 'nowrap',
-      textOverflow: 'ellipsis',
-      overflow: 'hidden',
-      padding: '5px 10px'
-    }} {...props}/>
-  )
-
-  const Main = (props) => (
-    <div style={{
-      flex: 1,
-      height: '100vh',
-      overflow: 'auto'
-    }}>
-      <div style={{ padding: '20px'}} {...props}/>
-    </div>
-  )
-
-
-const mapStateToProps = state => ({
-  products: getVisibleProducts(state.products)
-})
+    return (
+      <div>
+        <ProductsList products={products} selectProduct={selectProduct} />
+        <Route path={`${match.url}/:productId`}  component={ProductDetail}/>
+        <Route exact path={match.url} render={() => (
+        <div>Select a Product</div>
+      )}/>
+      </div>
+    )
+  }
+}
 
 export default connect(
-  mapStateToProps,
-  { addToCart }
-)(PContainer)
+  state => ({
+    products: state.products,
+    product: state.product,
+    cart: state.cart
+  }), { addToCart, selectProduct }
+)(Products)

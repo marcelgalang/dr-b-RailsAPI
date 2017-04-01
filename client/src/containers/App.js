@@ -1,11 +1,12 @@
 import React from 'react'
-import { BrowserRouter as Router, Route } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 
 import Products from './Products'
-import Carts from './Carts'
+import CartContainer from './CartContainer'
 import Checkout from './Checkout'
-import About from './About'
-
+import About from '../components/About'
+import Home from '../components/Home'
+import Navbar from '../components/Navbar'
 const App = () => (
   <Router >
     <div>
@@ -15,7 +16,7 @@ const App = () => (
         <Route exact path="/products" component={Products} />
         <Route path="/cart" component={CartContainer} />
         <Route path="/checkout" component={Checkout} />
-        <Route exact path="/about" component={About}
+        <Route exact path="/about" component={About} />
       </Switch>
     </div>
   </Router>

@@ -1,7 +1,7 @@
 import { createStore, applyMiddleware } from 'redux'
-import reducer from './reducers'
+import { reducer, combineReducers } from './modules/Auth'
 import thunk from 'redux-thunk'
-import { getAllProducts } from './actions'
+import { getAllProducts } from './modules/Products'
 import createLogger from 'redux-logger'
 
 

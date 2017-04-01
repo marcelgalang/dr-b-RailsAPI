@@ -1,12 +1,9 @@
 import fetch from 'isomorphic-fetch';
-import * as types from '../constants/ActionTypes'
 
+export const ADD_TO_CART = 'ADD_TO_CART'
+export const CHECKOUT_REQUEST = 'CHECKOUT_REQUEST'
+export const CHECKOUT_FAILURE = 'CHECKOUT_FAILURE'
 
-import {
-  ADD_TO_CART,
-  CHECKOUT_REQUEST,
-  CHECKOUT_FAILURE
-} from '../constants/ActionTypes'
 
 const initialState = {
   addedIds: [],
@@ -56,16 +53,11 @@ const cart = (state = initialState, action) => {
   }
 }
 
-const addToCartUnsafe = productId => ({
-  type: types.ADD_TO_CART,
+export const addToCart = productId => ({
+  type: ADD_TO_CART,
   productId
 })
 
-export const addToCart = productId => (dispatch, getState) => {
-  if (getState().products.byId[productId].inventory > 0) {
-    dispatch(addToCartUnsafe(productId))
-  }
-}
 
 export const checkout = products => (dispatch, getState) => {
   const { cart } = getState()
