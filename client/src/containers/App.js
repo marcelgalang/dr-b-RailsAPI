@@ -1,12 +1,13 @@
 import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-
 import Products from './Products'
 import CartContainer from './CartContainer'
-import Checkout from './Checkout'
+import Checkout from '../components/Checkout'
 import About from '../components/About'
 import Home from '../components/Home'
 import Navbar from '../components/Navbar'
+
+
 const App = () => (
   <Router >
     <div>
@@ -21,6 +22,5 @@ const App = () => (
     </div>
   </Router>
 )
-
 
 export default App

@@ -1,0 +1,25 @@
+import React from 'react'
+import { Link } from 'react-router-dom'
+import {  Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+
+
+export default (props) => {
+
+    return (
+
+        <Navbar color="faded" light toggleable>
+          <NavbarBrand href="/">DR.B Mac Repair</NavbarBrand>
+            <Nav className="ml-auto" navbar>
+              <NavItem>
+                <NavLink href="/">Home</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="/products">Products and Services</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="/about">About</NavLink>
+              </NavItem>
+            </Nav>
+        </Navbar>
+    )
+}

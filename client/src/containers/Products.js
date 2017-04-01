@@ -13,10 +13,7 @@ class Products extends Component {
     return (
       <div>
         <ProductsList products={products} selectProduct={selectProduct} />
-        <Route path={`${match.url}/:productId`}  component={ProductDetail}/>
-        <Route exact path={match.url} render={() => (
-        <div>Select a Product</div>
-      )}/>
+        
       </div>
     )
   }

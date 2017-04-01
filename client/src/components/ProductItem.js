@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react'
 import Product from './Product'
 import { Button } from 'reactstrap';
-import * as Components from '../css/ProductStyle'
+
 
 const ProductItem = ({ product, onAddToCartClicked }) => (
   <div style={{ marginBottom: 20 }}>

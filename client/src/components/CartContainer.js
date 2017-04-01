@@ -1,9 +1,8 @@
 import React, { PropTypes } from 'react'
 import { connect } from 'react-redux'
-import { checkout } from '../redux/modules/Cart'
-import { getTotal, getCartProducts } from '../redux/modules/reducers'
-import Cart from '../components/Cart'
-
+import { checkout } from '../actions/index'
+import { getTotal, getCartProducts } from '../reducers'
+import Cart from './Cart'
 
 const CartContainer = ({ products, total, checkout }) => (
   <Cart
@@ -27,8 +26,6 @@ const mapStateToProps = (state) => ({
   products: getCartProducts(state),
   total: getTotal(state)
 })
-
-
 
 export default connect(
   mapStateToProps,
