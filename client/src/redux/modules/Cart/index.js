@@ -60,7 +60,7 @@ export const addToCart = productId => ({
 
 
 export const checkout = products => (dispatch, getState) => {
-  const { cart } = getState()
+ const { cart } = getState()
 
   fetch('/api/carts', {
     method: 'POST',
@@ -70,7 +70,7 @@ export const checkout = products => (dispatch, getState) => {
     },
     body: JSON.stringify({
       id: 'id',
-      products: 'products',
+      cart: 'cart',
       total: 'total'
   })
 })

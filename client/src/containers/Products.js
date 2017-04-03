@@ -1,28 +1,52 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link, Route, match } from 'react-router-dom'
-import { addToCart } from '../redux/modules/Cart'
-import { getVisibleProducts } from '../redux/modules/Products'
 import ProductsList, { selectProduct } from '../components/ProductsList'
 import ProductDetail from '../components/ProductDetail'
+import ProductIndexItem from '../components/ProductIndexItem'
+import { Route, Link, match} from 'react-router-dom'
+import { getVisibleProducts } from '../redux/modules/Products'
+import { Root, Main, Sidebar, SidebarItem } from '../styles/ProductStyle'
+import { addToCart } from '../redux/modules/Cart'
 
 class Products extends Component {
   render() {
-    const { selectProduct, products } = this.props
+    const { products, selectProduct, addToCart } = this.props
+    console.log(this.props)
 
-    return (
-      <div>
-        <ProductsList products={products} selectProduct={selectProduct} />
-        
-      </div>
+
+    return(
+      <Root>
+      <ProductsList products={products} selectProduct={selectProduct} addToCart={addToCart}/>
+
+        <Sidebar>
+          <div>{products.map((product) => (
+            <SidebarItem key={product.id}>
+              <ProductIndexItem
+                key={product.id}
+                product={product}
+                onAddToCartClicked={() => addToCart(product.id)}
+                />
+            </SidebarItem>
+          ))}</div>
+        </Sidebar>
+        <Main>
+          <Route path="/products/:productId"  render={({match}) => (
+            <ProductDetail product=
+              {products.find(product => product.id == match.params.productId)}/>
+          )}/>
+        </Main>
+      <ProductsList/>
+      </Root>
     )
   }
 }
 
+const mapStateToProps = state => ({
+  products: getVisibleProducts(state.products),
+  product: state.product,
+  cart: state.cart
+})
+
 export default connect(
-  state => ({
-    products: state.products,
-    product: state.product,
-    cart: state.cart
-  }), { addToCart, selectProduct }
+  mapStateToProps, { selectProduct, addToCart }
 )(Products)

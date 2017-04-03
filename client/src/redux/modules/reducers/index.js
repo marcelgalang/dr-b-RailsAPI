@@ -1,10 +1,11 @@
-{/* reducer and my actions*/}
 import { combineReducers } from 'redux'
 import cart, * as fromCart from '../Cart'
 import products, * as fromProducts from '../Products'
+import product, * as fromProduct from '../Product'
 
 export default combineReducers({
   cart,
+  product,
   products
 })
 

@@ -1,4 +1,8 @@
 import React, { Component, PropTypes } from 'react';
+import { Route, Link,  match } from 'react-router-dom';
+import { Root, Main, Sidebar, SidebarItem } from '../styles/ProductStyle'
+import ProductDetail from '../components/ProductDetail'
+import { addToCart } from '../redux/modules/Cart'
 
 class ProductsList extends Component {
 
@@ -9,12 +13,14 @@ class ProductsList extends Component {
   handleSelectProduct = product => this.props.selectProduct(product, this.context.router)
 
   render() {
-    const renderProducts = this.props.products.map(product => <span onClick={this.handleSelectProduct(product)} key={product.id}>{product.name}</span>)
+    const { products } = this.props
+
 
     return (
-      <div>
-        {renderProducts}
-      </div>
+      <Root>
+        
+      </Root>
+
     )
   }
 }

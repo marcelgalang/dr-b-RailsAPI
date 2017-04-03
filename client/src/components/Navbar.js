@@ -1,6 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
-import {  Collapse, Navbar, NavbarToggler, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
+import {  Navbar, NavbarBrand, Nav, NavItem, NavLink } from 'reactstrap';
 
 
 export default (props) => {
