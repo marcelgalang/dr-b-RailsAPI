@@ -1,9 +1,6 @@
 import React, { Component } from 'react'
 import { Button } from 'reactstrap';
-import Product from './Product'
-import { Route, Link, match } from 'react-router-dom';
-import { Main } from '../styles/ProductStyle'
-import { addToCart } from '../redux/modules/Cart'
+import { Link  } from 'react-router-dom';
 
 
 
@@ -12,11 +9,8 @@ class ProductIndexItem extends Component{
 
 
   render(){
-    const { product, onAddToCartClicked, match } = this.props
-    console.log(product.category.title)
-
-
-
+    const { product, onAddToCartClicked } = this.props
+    
     return (
       <div>
         <div>
@@ -26,9 +20,10 @@ class ProductIndexItem extends Component{
         </div>
         <Button
           outline color="success" size="sm"
-          onClick={() => addToCart(product.id)}>
+          onClick={onAddToCartClicked}>
           add to cart
         </Button>
+        <hr/>
       </div>
     )
   }

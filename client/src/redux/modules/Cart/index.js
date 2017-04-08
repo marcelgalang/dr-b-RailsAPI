@@ -7,8 +7,9 @@ export const CHECKOUT_FAILURE = 'CHECKOUT_FAILURE'
 
 const initialState = {
   addedIds: [],
-  quantityById: {}
+  quantityById: {},
 }
+
 
 const addedIds = (state = initialState.addedIds, action) => {
   switch (action.type) {
@@ -53,26 +54,18 @@ const cart = (state = initialState, action) => {
   }
 }
 
+
 export const addToCart = productId => ({
   type: ADD_TO_CART,
   productId
 })
 
-
 export const checkout = products => (dispatch, getState) => {
- const { cart } = getState()
+  const { cart } = getState()
 
-  fetch('/api/carts', {
-    method: 'POST',
-    headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      id: 'id',
-      cart: 'cart',
-      total: 'total'
+  dispatch({
+    type: CHECKOUT_REQUEST
   })
-})
+
 }
 export default cart

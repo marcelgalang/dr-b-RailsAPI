@@ -1,10 +1,9 @@
 import React from 'react'
-import { Button } from 'reactstrap';
 
-const Product = ({ price, quantity, title }) => (
+const Product = ({ price, quantity, title, category }) => (
 
   <div>
-    {title} - &#36;{price}{quantity ? ` x ${quantity}` : null}
+    {category.title}:{title} - &#36;{price}{quantity ? ` x ${quantity}` : null}
   </div>
 )
 

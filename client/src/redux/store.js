@@ -2,7 +2,8 @@
 import { createStore, applyMiddleware } from 'redux'
 import reducer from './modules/reducers'
 import thunk from 'redux-thunk'
-import { getAllProducts } from './modules/Products'
+import { getAllProducts } from './api/ProductsApi'
+import { getAllCarts } from './api/CartApi'
 
 
 export function configureStore(){
@@ -13,3 +14,4 @@ export function configureStore(){
 export const store = configureStore()
 
 store.dispatch(getAllProducts())
+store.dispatch(getAllCarts())

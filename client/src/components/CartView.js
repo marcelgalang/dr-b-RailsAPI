@@ -1,14 +1,12 @@
 import React, { PropTypes } from 'react'
 import Product from './Product'
-import { Button } from 'reactstrap';
+import { Main } from '../styles/ProductStyle'
 
-
-const CartDetail  = ({ products, total, onCheckoutClicked, onCartClicked }) => {
+const CartView  = ({ products, total, onCheckoutClicked }) => {
   const hasProducts = products.length > 0
   const nodes = hasProducts ? (
     products.map(product =>
       <Product
-        category={product.category}
         title={product.title}
         price={product.price}
         quantity={product.quantity}
@@ -20,27 +18,22 @@ const CartDetail  = ({ products, total, onCheckoutClicked, onCartClicked }) => {
   )
 
   return (
-    <div>
+    <Main>
       <h3>Your Cart</h3>
       <div>{nodes}</div>
       <p>Total: &#36;{total}</p>
-      <Button color="primary"
-        onclick={onCartClicked}>
-        Save Cart</Button>
-      <Button
-        color="success"
-        onClick={onCheckoutClicked}
+      <button onClick={onCheckoutClicked}
         disabled={hasProducts ? '' : 'disabled'}>
         Checkout
-      </Button>
-    </div>
+      </button>
+    </Main>
   )
 }
 
-CartDetail.propTypes = {
+CartView.propTypes = {
   products: PropTypes.array,
   total: PropTypes.string,
   onCheckoutClicked: PropTypes.func
 }
 
-export default CartDetail
+export default CartView

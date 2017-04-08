@@ -3,17 +3,16 @@ import { connect } from 'react-redux'
 import ProductsList, { selectProduct } from '../components/ProductsList'
 import ProductDetail from '../components/ProductDetail'
 import ProductIndexItem from '../components/ProductIndexItem'
-import { Route, Link, match} from 'react-router-dom'
+import { Route } from 'react-router-dom'
 import { getVisibleProducts } from '../redux/modules/Products'
 import { Root, Main, Sidebar, SidebarItem } from '../styles/ProductStyle'
 import { addToCart } from '../redux/modules/Cart'
+import CartContainer from '../containers/CartContainer'
 
 class Products extends Component {
   render() {
-    const { products, selectProduct, addToCart } = this.props
-    console.log(this.props)
-
-
+    const { products, selectProduct, addToCart, cart } = this.props
+    console.log(cart)
     return(
       <Root>
       <ProductsList products={products} selectProduct={selectProduct} addToCart={addToCart}/>
@@ -30,10 +29,15 @@ class Products extends Component {
           ))}</div>
         </Sidebar>
         <Main>
-          <Route path="/products/:productId"  render={({match}) => (
-            <ProductDetail product=
-              {products.find(product => product.id == match.params.productId)}/>
-          )}/>
+          {
+            <Route path="/products/:productId"  render={({match}) => (
+              <ProductDetail product=
+                {products.find(product => product.id == match.params.productId)}/>
+            )}/>
+            ||
+            <CartContainer/>
+          }
+
         </Main>
       <ProductsList/>
       </Root>
