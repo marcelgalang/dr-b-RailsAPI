@@ -19,6 +19,7 @@ gem 'foreman'
 gem 'omniauth'
 gem 'pry'
 gem 'omniauth-paypal'
+gem 'railties', '~> 5.0', '>= 5.0.0.1'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
