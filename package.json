@@ -36,7 +36,6 @@
     "eject": "react-scripts eject",
     "compile-less": "grunt compile-less",
     "watch-less": "grunt watch",
-    "webpack:deploy": "webpack --config=webpack/webpack.config.js -p",
-    "heroku-postbuild": "npm run webpack:deploy"
+    
   }
 }
