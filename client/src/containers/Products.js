@@ -31,8 +31,7 @@ class Products extends Component {
         <Main>
           {
             <Route path="/products/:productId"  render={({match}) => (
-              <ProductDetail product=
-                {products.find(product => product.id == match.params.productId)}/>
+              <ProductDetail product=        {products.find(product => product.id == match.params.productId)}/>
             )}/>
             ||
             <CartContainer/>

@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { checkout } from '../redux/modules/Cart'
 import { getTotal, getCartProducts } from '../redux/modules/reducers'
 import Cart from '../components/Cart'
-import { Root, Main, Sidebar, SidebarItem } from '../styles/ProductStyle'
+import { Root, Main, Sidebar } from '../styles/ProductStyle'
 import Products from './Products'
 
 

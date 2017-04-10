@@ -1,8 +1,6 @@
 import React, { PropTypes, Component } from 'react'
 import { connect } from 'react-redux'
-import * as cartActions from '../redux/modules/Carts'
 import CartList from './CartList'
-import createFragment from 'react-addons-create-fragment'
 
 class CartPage extends Component {
 
