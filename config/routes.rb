@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 
   namespace :api do
-    resources :services, :categories, :carts
+    resources :products, :categories, :carts
 
   end
 end
