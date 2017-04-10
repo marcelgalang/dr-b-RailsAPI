@@ -1,24 +1,44 @@
+
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+##Dr. B Mac Service - Online Store
 
-Things you may want to cover:
+A online retail store suing React, redux, React Router front end with a Ruby on Rails back end.
 
-* Ruby version
+## Installation
 
-* System dependencies
+Clone this line to your terminal
 
-* Configuration
+For SSH
+```ruby
+git@github.com:marcelgalang/doctor-b-service-shop.git
+```
 
-* Database creation
+For HTTPS
+```ruby
+https://github.com/marcelgalang/doctor-b-service-shop.git
+```
 
-* Database initialization
+Install the needed gems locally:
 
-* How to run the test suite
+```
+$ bundle install --without production
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+Then execute:
 
-* Deployment instructions
+    $ rails server
 
-* ...
+Finally, redirect your browser to the URL given by the Rails Server, often http://localhost:3000.
+
+## Contribute
+
+To contribute to this app, fork the repository and push to a new branch for me to review.
+
+## License
+
+The app is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+
+##Contact
+
+Marcel Galang marcelgalang@gmail.com
