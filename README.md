@@ -1,7 +1,7 @@
 
 # README - Dr. B Mac Service - Online Store
 
-A online retail store suing React, redux, React Router front end with a Ruby on Rails back end.
+A online retail store uing React, redux, React Router front end with a Ruby on Rails back end.
 
 ## Installation
 
