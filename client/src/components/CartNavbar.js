@@ -1,7 +1,7 @@
 import React, { PropTypes, Component } from 'react'
 import { connect } from 'react-redux'
 import { checkout, addExternalId } from '../redux/modules/Cart'
-import { getTotal, getCartProducts, getTotalQuantity, getExternalId } from '../redux/modules/reducers'
+import { getTotal, getCartProducts, getTotalQuantity } from '../redux/modules/reducers'
 import CartNavDetail from '../components/CartNavDetail'
 import { createCart } from '../redux/api/CartApi'
 

@@ -1,14 +1,10 @@
 import React, { Component } from 'react'
-import { addToCart } from '../redux/modules/Cart'
-
-
-
 
 class ProductDetail extends Component{
 
 
   render(){
-    const { product, match } = this.props
+    const { product } = this.props
 
     return (
       <div>

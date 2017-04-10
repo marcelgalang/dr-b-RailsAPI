@@ -1,5 +1,3 @@
-import fetch from 'isomorphic-fetch';
-
 export const ADD_TO_CART = 'ADD_TO_CART'
 export const CHECKOUT_REQUEST = 'CHECKOUT_REQUEST'
 export const CHECKOUT_FAILURE = 'CHECKOUT_FAILURE'
@@ -61,7 +59,6 @@ export const addToCart = productId => ({
 })
 
 export const checkout = products => (dispatch, getState) => {
-  const { cart } = getState()
 
   dispatch({
     type: CHECKOUT_REQUEST

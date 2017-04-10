@@ -10,7 +10,7 @@ class ProductIndexItem extends Component{
 
   render(){
     const { product, onAddToCartClicked } = this.props
-    
+
     return (
       <div>
         <div>
@@ -19,7 +19,7 @@ class ProductIndexItem extends Component{
            | &#36;{product.price}</div>
         </div>
         <Button
-          outline color="success" size="sm"
+          outline color="secondary" size="sm"
           onClick={onAddToCartClicked}>
           add to cart
         </Button>

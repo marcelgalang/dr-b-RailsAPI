@@ -21,16 +21,17 @@ const CartDetail  = ({ products, total, onCheckoutClicked, onCartClicked }) => {
 
   return (
     <div>
-      <h3>Your Cart</h3>
-      <div>{nodes}</div>
+      <h3>{nodes}</h3>
       <p>Total: &#36;{total}</p>
-      <Button color="primary"
-        onclick={onCartClicked}>
+      <Button color="secondary"
+
+        onClick={onCartClicked}>
         Save Cart</Button>
+        &nbsp;
       <Button
-        color="success"
+        color="secondary"
         onClick={onCheckoutClicked}
-        disabled={hasProducts ? '' : 'disabled'}>
+        disabled={hasProducts ? '' : true }>
         Checkout
       </Button>
     </div>

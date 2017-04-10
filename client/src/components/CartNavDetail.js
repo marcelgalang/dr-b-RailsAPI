@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react'
 import { Button } from 'reactstrap';
-import { Link, Route } from 'react-router-dom'
-import Checkout from './Checkout'
+import { Link } from 'react-router-dom'
 import CartContainer from '../containers/CartContainer'
 
 const CartNavDetail  = ({ products, total, totalQuantity, onCartClicked }) => {
@@ -14,13 +13,11 @@ const CartNavDetail  = ({ products, total, totalQuantity, onCartClicked }) => {
 
 
   return (
-    <Button outline color="success">
-      <Link 
+    <Button outline color="secondary"
+      disabled={hasProducts ? '' : 'disabled'}>
+      <Link
         onClick={onCartClicked}
-        disabled={hasProducts ? '' : 'disabled'}
-        to={`/cart`}
-        render={CartContainer}
-        >
+        to={`/cart`}>
         Cart:{nodes}
       </Link>
 
