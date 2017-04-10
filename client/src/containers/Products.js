@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import ProductsList, { selectProduct } from '../components/ProductsList'
+import ProductsList from '../components/ProductsList'
 import ProductDetail from '../components/ProductDetail'
 import ProductIndexItem from '../components/ProductIndexItem'
 import { Route } from 'react-router-dom'
@@ -51,5 +51,5 @@ const mapStateToProps = state => ({
 })
 
 export default connect(
-  mapStateToProps, { selectProduct, addToCart }
+  mapStateToProps, { addToCart }
 )(Products)
