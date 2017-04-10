@@ -27,9 +27,8 @@ $ bundle install --without production
 
 Then execute:
 
-    $ rails server
-
-Finally, redirect your browser to the URL given by the Rails Server, often http://localhost:3000.
+    $ rake start
+    
 
 ## Contribute
 
