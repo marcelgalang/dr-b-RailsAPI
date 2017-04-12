@@ -44,6 +44,8 @@ import { loadCartsSuccess } from '../modules/Carts'
 
     console.log(cart)
     console.log(formattedCart)
+    console.log(JSON.parse(formattedCart.quantity_by_id))
+
     fetch(`/api/carts`, {
       method: 'POST',
       headers: {

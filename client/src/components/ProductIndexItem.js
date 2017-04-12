@@ -23,6 +23,7 @@ class ProductIndexItem extends Component{
           onClick={onAddToCartClicked}>
           add to cart
         </Button>
+        <ProductLikes/>
         <hr/>
       </div>
     )
@@ -30,6 +31,36 @@ class ProductIndexItem extends Component{
 }
 
 
-
-
 export default ProductIndexItem
+
+class ProductLikes extends Component {
+  constructor() {
+    super();
+
+    this.state = {
+      counter: 0,
+    };
+
+     this.handleClick = this.handleClick.bind(this);
+  }
+
+  handleClick() {
+    this.setState({
+      counter: ++this.state.counter,
+    });
+  }
+
+
+
+  render() {
+
+    return(
+      <div><button
+      onClick={this.handleClick}>
+      Likes
+      </button>
+       {this.state.counter}
+      </div>
+    )
+  }
+}

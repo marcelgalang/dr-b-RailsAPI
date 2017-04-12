@@ -10,7 +10,7 @@ export default class Checkout extends Component {
 
         return (
             <div>
-                <CartPage/>
+                Checkout Page is coming soon.
             </div>
         )
     }

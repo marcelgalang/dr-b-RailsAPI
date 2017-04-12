@@ -11,12 +11,10 @@ import CartContainer from '../containers/CartContainer'
 
 class Products extends Component {
   render() {
-    const { products, selectProduct, addToCart, cart } = this.props
+    const { products, addToCart, cart } = this.props
     console.log(cart)
     return(
       <Root>
-      <ProductsList products={products} selectProduct={selectProduct} addToCart={addToCart}/>
-
         <Sidebar>
           <div>{products.map((product) => (
             <SidebarItem key={product.id}>
