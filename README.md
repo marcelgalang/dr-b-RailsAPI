@@ -23,6 +23,13 @@ Install the needed gems locally:
 $ bundle install --without production
 ```
 
+Seed and migrate the database:
+
+```
+    $ rake db:seed
+    $ rake db:migrate
+```
+
 Then execute:
 
     $ rake start
