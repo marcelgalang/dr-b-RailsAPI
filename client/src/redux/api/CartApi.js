@@ -19,18 +19,18 @@ import { loadCartsSuccess } from '../modules/Carts'
       });
     }
 
-  const updateCart=(cart)=> {
-    const headers = Object.assign({'Content-Type': 'applicartion/json'}, this.requestHeaders());
-    const request = new Request(`/api/carts/${cart.id}`, {
+  export const updateCart=(cart)=> {
+
+    fetch(`/api/carts/${cart.id}`, {
       method: 'PUT',
-      headers: headers,
+      headers: {
+        'Content-Type': 'application/json'
+      },
       body: JSON.stringify({cart: cart})
-    });
-
-
-    return fetch(request).then(response => {
+    })
+    .then(response => {
       return response.json();
-    }).cartch(error => {
+    }).catch(error => {
       return error;
     });
   }
@@ -41,11 +41,6 @@ import { loadCartsSuccess } from '../modules/Carts'
       product_ids: cart.addedIds,
       quantity_by_id: JSON.stringify(cart.quantityById),
     }
-
-    console.log(cart)
-    console.log(formattedCart)
-    console.log(JSON.parse(formattedCart.quantity_by_id))
-
     fetch(`/api/carts`, {
       method: 'POST',
       headers: {

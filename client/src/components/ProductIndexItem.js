@@ -23,8 +23,7 @@ class ProductIndexItem extends Component{
           onClick={onAddToCartClicked}>
           add to cart
         </Button>
-        <ProductLikes/>
-        <hr/>
+        
       </div>
     )
   }

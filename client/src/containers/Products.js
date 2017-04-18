@@ -7,12 +7,15 @@ import { Route } from 'react-router-dom'
 import { getVisibleProducts } from '../redux/modules/Products'
 import { Root, Main, Sidebar, SidebarItem } from '../styles/ProductStyle'
 import { addToCart } from '../redux/modules/Cart'
+import { addLike } from '../redux/modules/Product'
 import CartContainer from '../containers/CartContainer'
+import ProductLikesToRails from'../components/ProductLikesToRails'
+import { updateProduct } from '../redux/api/ProductsApi'
 
 class Products extends Component {
   render() {
-    const { products, addToCart, cart } = this.props
-    console.log(cart)
+    const { products, addToCart, cart, counter } = this.props
+
     return(
       <Root>
         <Sidebar>
@@ -23,6 +26,12 @@ class Products extends Component {
                 product={product}
                 onAddToCartClicked={() => addToCart(product.id)}
                 />
+                <ProductLikesToRails
+                  counter={counter}
+                  product={product}
+                  onClickToLike={() => updateProduct(product.id)}
+                  />
+                  <hr/>
             </SidebarItem>
           ))}</div>
         </Sidebar>
@@ -45,8 +54,11 @@ class Products extends Component {
 const mapStateToProps = state => ({
   products: getVisibleProducts(state.products),
   product: state.product,
-  cart: state.cart
+  cart: state.cart,
+
 })
+
+
 
 export default connect(
   mapStateToProps, { addToCart }

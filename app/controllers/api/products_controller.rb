@@ -5,7 +5,6 @@ class Api::ProductsController < ApplicationController
   end
 
   def show
-
       render json: Product.find_by(id: params[:id]).to_json
   end
 
@@ -18,19 +17,23 @@ class Api::ProductsController < ApplicationController
       end
   end
 
+  def update
+    product = Product.find_by(id: params[:id])
+    product.update(product_params)
+    render json: product
+
+  end
+
   def destroy
       product = Product.find_by(id: params[:id])
-      if product.delete
-          render json: { sucess: 'ok' }
-      else
-          render json: { message: 'error' }, status: 412
-      end
+      product.update_attributes(product_params)
+      respond_with prodcut, json: product
   end
 
   private
 
       def product_params
-          params.require(:product).permit(:title, :description, :price, :inventory, :category_id)
+          params.require(:product).permit(:title, :description, :price, :inventory, :category_id, :id)
       end
 
 
