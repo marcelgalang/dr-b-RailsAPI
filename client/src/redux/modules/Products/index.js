@@ -2,7 +2,6 @@ import { combineReducers } from 'redux'
 
 export const ADD_TO_CART = 'ADD_TO_CART'
 export const RECEIVE_PRODUCTS = 'RECEIVE_PRODUCTS'
-const INCREASE_COUNT ='INCREASE_COUNT'
 
 
 const products = (state, action) => {
@@ -48,14 +47,6 @@ const visibleIds = (state = [], action) => {
   }
 }
 
-const visibleUpvote = (state = {}, action) => {
-  switch (action.type) {
-    case RECEIVE_PRODUCTS:
-      return action.products.map(product => product.upvote)
-    default:
-      return state
-  }
-}
 
 export const receiveProducts = products => ({
   type: RECEIVE_PRODUCTS,
@@ -65,8 +56,7 @@ export const receiveProducts = products => ({
 
 export default combineReducers({
   byId,
-  visibleIds,
-  visibleUpvote
+  visibleIds
 })
 
 export const getProduct = (state, id) =>

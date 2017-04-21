@@ -8,8 +8,6 @@ export const getAllProducts = () => dispatch => {
   })
 }
 
-
-
 export const updateProduct = (product) => {
   console.log(JSON.stringify({product: product}))
   fetch(`/api/products/${product.id}`, {
@@ -24,20 +22,5 @@ export const updateProduct = (product) => {
     ).catch(error => {
       return error;
     });
-    
-  }
 
-  export const updateProducts = (products) => {
-    fetch(`/api/products/`, {
-      method: 'POST',
-      headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({products: products})
-    })
-    .then(response => response.json()
-      ).catch(error => {
-        return error;
-      });
-    }
+  }

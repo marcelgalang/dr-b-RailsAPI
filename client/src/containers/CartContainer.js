@@ -5,9 +5,6 @@ import { getTotal, getCartProducts } from '../redux/modules/reducers'
 import Cart from '../components/Cart'
 import { Root, Main, Sidebar } from '../styles/ProductStyle'
 import Products from './Products'
-import { updateCart } from '../redux/api/CartApi'
-
-
 
 const CartContainer = ({ products, total, checkout, cart }) => (
   <Root>
@@ -18,7 +15,7 @@ const CartContainer = ({ products, total, checkout, cart }) => (
   <Cart
     products={products}
     total={total}
-    onCheckoutClicked={() => updateCart(cart)}
+    onCheckoutClicked={() => checkout(products)}
     />
   </Main>
   </Root>

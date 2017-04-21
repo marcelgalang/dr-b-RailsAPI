@@ -7,14 +7,13 @@ import { Route } from 'react-router-dom'
 import { getVisibleProducts } from '../redux/modules/Products'
 import { Root, Main, Sidebar, SidebarItem } from '../styles/ProductStyle'
 import { addToCart } from '../redux/modules/Cart'
-import { addLike } from '../redux/modules/Product'
 import CartContainer from '../containers/CartContainer'
 import ProductLikesToRails from'../components/ProductLikesToRails'
 import { updateProduct } from '../redux/api/ProductsApi'
 
 class Products extends Component {
   render() {
-    const { products, addToCart, cart, counter } = this.props
+    const { products, addToCart, counter } = this.props
 
     return(
       <Root>
@@ -38,7 +37,7 @@ class Products extends Component {
         <Main>
           {
             <Route path="/products/:productId"  render={({match}) => (
-              <ProductDetail product=        {products.find(product => product.id == match.params.productId)}/>
+              <ProductDetail product={products.find(product => product.id== match.params.productId)}/>
             )}/>
             ||
             <CartContainer/>

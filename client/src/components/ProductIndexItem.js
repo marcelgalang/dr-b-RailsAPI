@@ -23,7 +23,7 @@ class ProductIndexItem extends Component{
           onClick={onAddToCartClicked}>
           add to cart
         </Button>
-        
+
       </div>
     )
   }
@@ -48,8 +48,6 @@ class ProductLikes extends Component {
       counter: ++this.state.counter,
     });
   }
-
-
 
   render() {
 

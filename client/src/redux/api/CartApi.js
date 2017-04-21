@@ -1,12 +1,5 @@
 import { loadCartsSuccess } from '../modules/Carts'
 
-
-  const requestHeaders = () => {
-    return {
-      'Content-Type': 'application/json',
-    }
-  }
-
   export const getAllCarts =() => dispatch => {
 
     fetch(`/api/carts`)
@@ -50,20 +43,6 @@ import { loadCartsSuccess } from '../modules/Carts'
     })
     .then(response =>  response.json()
     ).catch(error => {
-      return error;
-    });
-  }
-
-  const deletecart = (cart) => {
-    const headers = Object.assign({'Content-Type': 'application/json'}, this.requestHeaders());
-    const request = new Request(`/api/carts/${cart.id}`, {
-      method: 'DELETE',
-      headers: headers
-    });
-
-    return fetch(request).then(response => {
-      return response.json();
-    }).cartch(error => {
       return error;
     });
   }

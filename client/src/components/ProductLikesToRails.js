@@ -1,11 +1,8 @@
-import React, { Component } from 'react'
-import { connect } from 'react-redux'
-import { bindActionCreators } from 'redux'
-import { counterFunction } from '../redux/modules/Products'
-import  *  as actions from '../redux/modules/Products'
-import { store } from '../redux/store'
-import { addLike } from '../redux/modules/Product'
-import { updateProduct } from '../redux/api/ProductsApi.js'
+import React, { Component } from 'react';
+import { updateProduct } from '../redux/api/ProductsApi.js';
+import { Button } from 'reactstrap';
+
+
 
 class ProductLikesToRails extends Component {
   constructor(props) {
@@ -17,24 +14,17 @@ class ProductLikesToRails extends Component {
     };
 
      this.handleClick = this.handleClick.bind(this);
-     this.updateProductState = this.updateProductState.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.product.id != nextProps.product.id) {
-      this.setState({product: nextProps.prodcut});
+    if (this.props.product.id !== nextProps.product.id) {
+      this.setState({product: nextProps.product});
     }
   }
 
-  updateProductState(event) {
-    const product = this.state.product;
-    const field = event.target.name;
-    product[field] = event.target.value;
-    return this.setState({product:product})
-  }
+
 
   handleClick() {
-
       this.setState({
         counter: ++this.state.product.upvote,
       });
@@ -44,14 +34,12 @@ class ProductLikesToRails extends Component {
   render() {
     const { product } = this.props
     return(
-      <div><button
+      <div><Button
+      color="secondary" size="sm"
       onClick={this.handleClick}
       id={product.id}>
-      Likes
-      </button>
-
-       {product.upvote}
-
+      likes: {product.upvote}
+      </Button>
       </div>
     )
   }

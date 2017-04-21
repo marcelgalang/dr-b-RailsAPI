@@ -1,4 +1,4 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
 import { Root } from '../styles/ProductStyle'
 
 class ProductsList extends Component {

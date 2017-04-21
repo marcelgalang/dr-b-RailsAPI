@@ -1,7 +1,6 @@
 import React, { PropTypes } from 'react'
 import { Button } from 'reactstrap';
 import { Link } from 'react-router-dom'
-import CartContainer from '../containers/CartContainer'
 
 const CartNavDetail  = ({ products, total, totalQuantity, onCartClicked }) => {
   const hasProducts = products.length > 0
