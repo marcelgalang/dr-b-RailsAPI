@@ -16,11 +16,7 @@ class ProductLikesToRails extends Component {
      this.handleClick = this.handleClick.bind(this);
   }
 
-  componentWillReceiveProps(nextProps) {
-    if (this.props.product.id !== nextProps.product.id) {
-      this.setState({product: nextProps.product});
-    }
-  }
+
 
 
 
